@@ -18,19 +18,34 @@ This part of the course we have already been through in CS50 assignment. However
 <img src="img/our-goal.png" width="700">
 
 
-## Lecture Notes
+## Initial CS50 Notes:
 
 
-### tiles0
+## GD50 Lecture Notes
+
+### tiles0: "Static Tiles"
 
 
-### tiles1
+-   Sprite Sheet with Ground and Sky
+-   Loop x and y, with table in table in table
+-   Set ground height
+-   Draw Sprites
 
 
-### character 1
+### tiles1: "Scrolling Tiles"
+-   Camera Control
+
+    ```lua
+    love.graphics.translate(x, y)
+    ```
+
+### character 0: "The Stationary Hero"
 
 
-### character 2
+### character 1: "The Moving Hero"
+
+
+### character 2: "The Tracked Hero"
 
 
 ### character 3
