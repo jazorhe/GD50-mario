@@ -1,7 +1,21 @@
 # GD50-mario
+This part of the course we have already been through in CS50 assignment. However, the overall structure of the game components can be done in a better way. This is basically an advanced version of what we have achieved.
+
+<img src="img/title.png" width="700">
 
 
 ## Overview
+**Topics:**
+-   Tile Maps
+-   2D Animation
+-   Procedural Level Generation
+-   Platformer Physics
+-   Basic AI
+-   Powerups
+
+**Our Goal**
+
+<img src="img/our-goal.png" width="700">
 
 
 ## Lecture Notes
