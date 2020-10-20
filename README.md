@@ -63,6 +63,11 @@ This part of the course we have already been through in CS50 assignment. However
 ### level2
 
 
+**Tile Collision**
+-   Only check tiles at the point
+
+
+
 
 ## Assignment
 ### Objectives
