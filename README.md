@@ -73,23 +73,23 @@ This part of the course we have already been through in CS50 assignment. However
 ### Objectives
 -   [x] Read and understand all of the Super Mario Bros. source code from Lecture 4.
     -   [x] [main.lua](#mainlua)
-    -   [x] Dependencies.lua, constants.lua and Util.lua
-    -   [x] Tile.lua, TileMap.lua and LevelMaker.lua, GameLevel.lua
-    -   [x] Entity.lua, GameObject.lua and StateMachine.lua
-    -   [x] Player.lua, Snail.lua
-    -   [x] Player States, Snail States, Game States and Animation.lua
+    -   [x] [Dependencies.lua, constants.lua and Util.lua](#dependencieslua-constantslua-and-utillua)
+    -   [x] [Tile.lua, TileMap.lua and LevelMaker.lua, GameLevel.lua](#tilelua-tilemaplua-and-levelmakerlua)
+    -   [x] [Entity.lua, GameObject.lua and StateMachine.lua](#entitylua-gameobjectlua-and-statemachinelua)
+    -   [x] [Player.lua, Snail.lua](#playerlua-snaillua)
+    -   [x] [Player States, Snail States, Game States and Animation.lua](#player-states-snail-states-game-states-and-animationlua)
 
 
--   [ ] **Start Player Safely**: Program it such that when the player is dropped into the level, they’re always done so above solid ground.
+-   [ ] [**Start Player Safely**](#start-player-safely): Program it such that when the player is dropped into the level, they’re always done so above solid ground.
 
 
--   [ ] **Keys and Locks**: In LevelMaker.lua, generate a random-colored key and lock block (taken from keys_and_locks.png in the graphics folder of the distro). The key should unlock the block when the player collides with it, triggering the block to disappear.
+-   [ ] [**Keys and Locks**](#keys-and-locks): In LevelMaker.lua, generate a random-colored key and lock block (taken from keys_and_locks.png in the graphics folder of the distro). The key should unlock the block when the player collides with it, triggering the block to disappear.
 
 
--   [ ] **Spawn Goal**: Once the lock has disappeared, trigger a goal post to spawn at the end of the level. Goal posts can be found in flags.png; feel free to use whichever one you’d like! Note that the flag and the pole are separated, so you’ll have to spawn a GameObject for each segment of the flag and one for the flag itself.
+-   [ ] [**Spawn Goal**](#spawn-goals): Once the lock has disappeared, trigger a goal post to spawn at the end of the level. Goal posts can be found in flags.png; feel free to use whichever one you’d like! Note that the flag and the pole are separated, so you’ll have to spawn a GameObject for each segment of the flag and one for the flag itself.
 
 
--   [ ] **Next Level**: When the player touches this goal post, we should regenerate the level, spawn the player at the beginning of it again (this can all be done via just reloading PlayState), and make it a little longer than it was before. You’ll need to introduce params to the PlayState:enter function that keeps track of the current level and persists the player’s score for this to work properly.
+-   [ ] [**Next Level**](#next-level): When the player touches this goal post, we should regenerate the level, spawn the player at the beginning of it again (this can all be done via just reloading PlayState), and make it a little longer than it was before. You’ll need to introduce params to the PlayState:enter function that keeps track of the current level and persists the player’s score for this to work properly.
 
 
 <br>
