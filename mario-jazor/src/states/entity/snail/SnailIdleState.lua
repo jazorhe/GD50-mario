@@ -1,13 +1,3 @@
---[[
-    GD50
-    Super Mario Bros. Remake
-
-    -- SnailIdleState Class --
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
-
 SnailIdleState = Class{__includes = BaseState}
 
 function SnailIdleState:init(tilemap, player, snail)

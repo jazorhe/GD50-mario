@@ -1,13 +1,3 @@
---[[
-    GD50
-    Super Mario Bros. Remake
-
-    -- Entity Class --
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
-
 Entity = Class{}
 
 function Entity:init(def)

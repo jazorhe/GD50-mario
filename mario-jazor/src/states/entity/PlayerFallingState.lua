@@ -1,13 +1,3 @@
---[[
-    GD50
-    Super Mario Bros. Remake
-
-    -- PlayerFallingState Class --
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
-
 PlayerFallingState = Class{__includes = BaseState}
 
 function PlayerFallingState:init(player, gravity)
@@ -32,7 +22,7 @@ function PlayerFallingState:update(dt)
     -- if we get a collision beneath us, go into either walking or idle
     if (tileBottomLeft and tileBottomRight) and (tileBottomLeft:collidable() or tileBottomRight:collidable()) then
         self.player.dy = 0
-        
+
         -- set the player to be walking or idle on landing depending on input
         if love.keyboard.isDown('left') or love.keyboard.isDown('right') then
             self.player:changeState('walking')
@@ -41,12 +31,12 @@ function PlayerFallingState:update(dt)
         end
 
         self.player.y = (tileBottomLeft.y - 1) * TILE_SIZE - self.player.height
-    
+
     -- go back to start if we fall below the map boundary
     elseif self.player.y > VIRTUAL_HEIGHT then
         gSounds['death']:play()
         gStateMachine:change('start')
-    
+
     -- check side collisions and reset position
     elseif love.keyboard.isDown('left') then
         self.player.direction = 'left'

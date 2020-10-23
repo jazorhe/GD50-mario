@@ -1,13 +1,3 @@
---[[
-    GD50
-    Super Mario Bros. Remake
-
-    -- Snail Class --
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
-
 Snail = Class{__includes = Entity}
 
 function Snail:init(def)

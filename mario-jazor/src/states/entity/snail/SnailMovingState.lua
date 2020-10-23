@@ -1,13 +1,3 @@
---[[
-    GD50
-    Super Mario Bros. Remake
-
-    -- SnailMovingState Class --
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
-
 SnailMovingState = Class{__includes = BaseState}
 
 function SnailMovingState:init(tilemap, player, snail)

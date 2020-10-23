@@ -1,19 +1,3 @@
---[[
-    GD50
-    Super Mario Bros. Remake
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-
-    -- Dependencies --
-
-    A file to organize all of the global dependencies for our project, as
-    well as the assets for our game, rather than pollute our main.lua file.
-]]
-
---
--- libraries
---
 Class = require 'lib/class'
 push = require 'lib/push'
 Timer = require 'lib/knife.timer'
@@ -102,3 +86,13 @@ gFonts = {
     ['large'] = love.graphics.newFont('fonts/font.ttf', 32),
     ['title'] = love.graphics.newFont('fonts/ArcadeAlternate.ttf', 32)
 }
+
+gSounds['music']:setLooping(true)
+gSounds['music']:setVolume(0.5)
+gSounds['music']:play()
+
+gStateMachine = StateMachine {
+    ['start'] = function() return StartState() end,
+    ['play'] = function() return PlayState() end
+}
+gStateMachine:change('start')
