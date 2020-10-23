@@ -72,7 +72,7 @@ This part of the course we have already been through in CS50 assignment. However
 ## Assignment
 ### Objectives
 -   [x] Read and understand all of the Super Mario Bros. source code from Lecture 4.
-    -   [x] main.lua
+    -   [x] [main.lua](#mainlua)
     -   [x] Dependencies.lua, constants.lua and Util.lua
     -   [x] Tile.lua, TileMap.lua and LevelMaker.lua, GameLevel.lua
     -   [x] Entity.lua, GameObject.lua and StateMachine.lua
