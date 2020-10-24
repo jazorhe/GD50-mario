@@ -3,7 +3,7 @@ PlayState = Class{__includes = BaseState}
 function PlayState:init()
     self.camX = 0
     self.camY = 0
-    self.level = LevelMaker.generate(100, 10)
+    self.level = LevelMaker.generate(20, 10)
     self.tileMap = self.level.tileMap
     self.background = math.random(3)
     self.backgroundX = 0
@@ -11,6 +11,7 @@ function PlayState:init()
     self.gravityOn = true
     self.gravityAmount = 6
     self.safeX = nil
+    self.hasGoal = false
 
     self:findSafeX()
     self.player = Player({
@@ -64,6 +65,11 @@ function PlayState:update(dt)
         self.player.x = TILE_SIZE * self.tileMap.width - self.player.width
     end
 
+    if self.player.hasKey and not self.hasGoal then
+        self:spawnGoal()
+        self.hasGoal = true
+    end
+
     self:updateCamera()
 end
 
@@ -86,9 +92,9 @@ function PlayState:render()
 
     -- render score
     love.graphics.setFont(gFonts['medium'])
-    love.graphics.setColor(0, 0, 0, 255)
+    love.graphics.setColor(0, 0, 0, 1)
     love.graphics.print(tostring(self.player.score), 5, 5)
-    love.graphics.setColor(255, 255, 255, 255)
+    love.graphics.setColor(1, 1, 1, 1)
     love.graphics.print(tostring(self.player.score), 4, 4)
 end
 
@@ -145,4 +151,90 @@ function PlayState:spawnEnemies()
             end
         end
     end
+end
+
+function PlayState:spawnGoal()
+    self.tileMap.width = self.tileMap.width + 5
+    gSounds['kill']:play()
+    for x = self.tileMap.width - 4, self.tileMap.width do
+        local tileID = TILE_ID_EMPTY
+        -- lay out the empty space
+        for y = 1, 6 do
+            table.insert(self.tileMap.tiles[y],
+                Tile(x, y, tileID, nil, 1, 1))
+        end
+
+        for y = 7, self.tileMap.height do
+            table.insert(self.tileMap.tiles[y],
+                Tile(x, y, TILE_ID_GROUND, nil, 1, 1))
+        end
+
+    end
+
+    table.insert(self.level.objects,
+        GameObject {
+            texture = 'flags',
+            x = (self.tileMap.width - 3 - 1) * TILE_SIZE,
+            y = 3 * TILE_SIZE,
+            width = 16,
+            height = 16,
+            frame = 3,
+            collidable = false,
+            solid = false
+        }
+    )
+
+    table.insert(self.level.objects,
+        GameObject {
+            texture = 'flags',
+            x = (self.tileMap.width - 3 - 1) * TILE_SIZE,
+            y = 4 * TILE_SIZE,
+            width = 16,
+            height = 16,
+            frame = 12,
+            collidable = false,
+            solid = false
+        }
+    )
+
+    table.insert(self.level.objects,
+        GameObject {
+            texture = 'flags',
+            x = (self.tileMap.width - 3 - 1) * TILE_SIZE,
+            y = 5 * TILE_SIZE,
+            width = 16,
+            height = 16,
+            frame = 21,
+            collidable = false,
+            solid = false
+        }
+    )
+
+    table.insert(self.level.objects,
+        GameObject {
+            texture = 'flags',
+            x = (self.tileMap.width - 3.5) * TILE_SIZE,
+            y = 3 * TILE_SIZE,
+            width = 16,
+            height = 16,
+            frame = 7,
+            collidable = false,
+            hit = false,
+            solid = false,
+            consumable = true,
+            animation = Animation({
+                frames = {7, 8},
+                interval = 0.2
+            }),
+
+            onConsume = function (obj)
+                if not obj.hit then
+                    gStateMachine:change('play')
+                    obj.hit = true
+                end
+                gSounds['pickup']:play()
+            end
+        }
+    )
+
 end
