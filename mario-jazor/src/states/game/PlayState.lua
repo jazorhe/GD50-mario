@@ -10,9 +10,11 @@ function PlayState:init()
 
     self.gravityOn = true
     self.gravityAmount = 6
+    self.safeX = nil
 
+    self:findSafeX()
     self.player = Player({
-        x = 0, y = 0,
+        x = self.safeX or 0, y = 0,
         width = 16, height = 20,
         texture = 'green-alien',
         stateMachine = StateMachine {
@@ -30,8 +32,23 @@ function PlayState:init()
     self.player:changeState('falling')
 end
 
+function PlayState:findSafeX()
+    for x = 1, self.tileMap.width do
+        for y = 1, self.tileMap.height do
+            if self.tileMap.tiles[y][x].id == TILE_ID_GROUND then
+                self.safeX = (x - 1) * TILE_SIZE
+                return
+            end
+        end
+    end
+end
+
 function PlayState:update(dt)
     Timer.update(dt)
+
+    if love.keyboard.wasPressed('r') then
+        gStateMachine:change('start')
+    end
 
     -- remove any nils from pickups, etc.
     self.level:clear()
